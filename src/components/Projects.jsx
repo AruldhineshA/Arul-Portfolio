@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { FiExternalLink, FiGithub } from "react-icons/fi";
 import { useTheme } from "../context/ThemeContext";
 
 const projects = [
@@ -15,7 +14,6 @@ const projects = [
       "Kafka",
       "LangGraph",
     ],
-    liveUrl: "https://nightly.skillzen.ai/",
     gradient: "from-blue-500 to-cyan-500",
   },
   {
@@ -23,7 +21,6 @@ const projects = [
     description:
       "Frontend Developer on the FCS US client project, building responsive and scalable user interfaces using React.js and Remix while efficiently solving complex UI and performance issues.",
     tech: ["React.js", "Remix", "JavaScript", "CSS"],
-    liveUrl: "https://fcs-admin-dev.skill-mine.com/",
     gradient: "from-purple-500 to-pink-500",
   },
 ];
@@ -83,7 +80,7 @@ export default function Projects() {
 
               <div className="p-5 sm:p-6 md:p-8">
                 {/* Title */}
-                <div className="flex items-center justify-between mb-4">
+                <div className="mb-4">
                   <h3
                     className={`text-lg sm:text-xl md:text-2xl font-bold ${
                       darkMode ? "text-white" : "text-gray-900"
@@ -91,36 +88,6 @@ export default function Projects() {
                   >
                     {project.title}
                   </h3>
-                  <div className="flex gap-2">
-                    {project.githubUrl && (
-                      <a
-                        href={project.githubUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                        className={`p-2 rounded-lg transition-colors ${
-                          darkMode
-                            ? "text-gray-400 hover:text-primary hover:bg-dark-border"
-                            : "text-gray-500 hover:text-primary hover:bg-gray-100"
-                        }`}
-                      >
-                        <FiGithub size={20} />
-                      </a>
-                    )}
-                    {project.liveUrl && (
-                      <a
-                        href={project.liveUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                        className={`p-2 rounded-lg transition-colors ${
-                          darkMode
-                            ? "text-gray-400 hover:text-primary hover:bg-dark-border"
-                            : "text-gray-500 hover:text-primary hover:bg-gray-100"
-                        }`}
-                      >
-                        <FiExternalLink size={20} />
-                      </a>
-                    )}
-                  </div>
                 </div>
 
                 {/* Description */}

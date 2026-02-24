@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import {
   FiMail,
@@ -8,6 +8,13 @@ import {
 } from "react-icons/fi";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { useTheme } from "../context/ThemeContext";
+import emailjs from "@emailjs/browser";
+
+// ⚠️ IMPORTANT: Replace these with YOUR actual EmailJS credentials
+// Get them from: https://dashboard.emailjs.com/
+const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
 const contactInfo = [
   {
@@ -45,26 +52,42 @@ const socialLinks = [
 
 export default function Contact() {
   const { darkMode } = useTheme();
+  const formRef = useRef();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
   });
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const mailtoLink = `mailto:aruldinesh497@gmail.com?subject=Portfolio Contact from ${formData.name}&body=${encodeURIComponent(
-      formData.message + "\n\nFrom: " + formData.name + "\nEmail: " + formData.email
-    )}`;
-    window.open(mailtoLink);
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 3000);
-    setFormData({ name: "", email: "", message: "" });
+    setLoading(true);
+    setError("");
+
+    try {
+      await emailjs.sendForm(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        formRef.current,
+        EMAILJS_PUBLIC_KEY
+      );
+
+      setSubmitted(true);
+      setFormData({ name: "", email: "", message: "" });
+      setTimeout(() => setSubmitted(false), 3000);
+    } catch {
+      setError("Failed to send message. Please try again.");
+      setTimeout(() => setError(""), 3000);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -198,6 +221,7 @@ export default function Contact() {
             transition={{ duration: 0.6 }}
           >
             <form
+              ref={formRef}
               onSubmit={handleSubmit}
               className={`space-y-5 p-6 sm:p-8 rounded-2xl border ${
                 darkMode
@@ -284,15 +308,20 @@ export default function Contact() {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 type="submit"
-                className="w-full py-3 rounded-lg bg-gradient-to-r from-primary to-accent text-white font-semibold flex items-center justify-center gap-2 hover:shadow-lg hover:shadow-primary/25 transition-shadow"
+                disabled={loading}
+                className="w-full py-3 rounded-lg bg-gradient-to-r from-primary to-accent text-white font-semibold flex items-center justify-center gap-2 hover:shadow-lg hover:shadow-primary/25 transition-shadow disabled:opacity-60"
               >
-                {submitted ? (
-                  "Message Sent!"
-                ) : (
-                  <>
-                    Send Message <FiSend />
-                  </>
-                )}
+                {loading
+                  ? "Sending..."
+                  : submitted
+                  ? "Message Sent!"
+                  : error
+                  ? error
+                  : (
+                    <>
+                      Send Message <FiSend />
+                    </>
+                  )}
               </motion.button>
             </form>
           </motion.div>

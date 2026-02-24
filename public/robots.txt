@@ -1,0 +1,9 @@
+# robots.txt - Tells search engine crawlers what they can/cannot access
+# https://developers.google.com/search/docs/crawling-indexing/robots/intro
+
+# Allow all search engines to crawl everything
+User-agent: *
+Allow: /
+
+# Tell crawlers where to find the sitemap
+Sitemap: https://aruldhinesh.site/sitemap.xml

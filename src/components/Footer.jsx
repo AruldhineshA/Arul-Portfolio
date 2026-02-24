@@ -35,6 +35,7 @@ export default function Footer() {
               href="https://github.com/AruldhineshA"
               target="_blank"
               rel="noreferrer"
+              aria-label="GitHub"
               className={`p-2 rounded-lg transition-colors ${
                 darkMode
                   ? "text-gray-400 hover:text-primary"
@@ -47,6 +48,7 @@ export default function Footer() {
               href="https://www.linkedin.com/in/arul-dhinesh-669ab0246/"
               target="_blank"
               rel="noreferrer"
+              aria-label="LinkedIn"
               className={`p-2 rounded-lg transition-colors ${
                 darkMode
                   ? "text-gray-400 hover:text-primary"
@@ -57,6 +59,7 @@ export default function Footer() {
             </a>
             <a
               href="mailto:aruldinesh497@gmail.com"
+              aria-label="Email"
               className={`p-2 rounded-lg transition-colors ${
                 darkMode
                   ? "text-gray-400 hover:text-primary"

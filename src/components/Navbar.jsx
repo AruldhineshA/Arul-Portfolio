@@ -37,6 +37,8 @@ export default function Navbar() {
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${navBg}`}
+      role="navigation"
+      aria-label="Main navigation"
     >
       <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
         {/* Logo */}
@@ -75,6 +77,7 @@ export default function Navbar() {
           {/* Theme Toggle */}
           <button
             onClick={toggleTheme}
+            aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
             className={`p-2 rounded-lg transition-colors ${
               darkMode
                 ? "bg-dark-card text-yellow-400 hover:bg-dark-border"
@@ -89,6 +92,7 @@ export default function Navbar() {
         <div className="flex md:hidden items-center gap-3">
           <button
             onClick={toggleTheme}
+            aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
             className={`p-2 rounded-lg transition-colors ${
               darkMode
                 ? "bg-dark-card text-yellow-400"
@@ -99,6 +103,8 @@ export default function Navbar() {
           </button>
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label={mobileOpen ? "Close menu" : "Open menu"}
+            aria-expanded={mobileOpen}
             className={darkMode ? "text-white" : "text-gray-900"}
           >
             {mobileOpen ? <HiX size={28} /> : <HiMenuAlt3 size={28} />}

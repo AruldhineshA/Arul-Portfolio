@@ -1,4 +1,5 @@
 import { Link } from "react-scroll";
+
 import { TypeAnimation } from "react-type-animation";
 import { motion } from "framer-motion";
 import { FiDownload, FiArrowRight } from "react-icons/fi";
@@ -50,19 +51,10 @@ export default function Hero() {
 
           <div className="text-lg sm:text-xl md:text-2xl font-semibold mb-6 h-8 sm:h-10">
             <TypeAnimation
-              sequence={[
-                "Junior Software Developer",
-                2000,
-                "Frontend Developer",
-                2000,
-                "React.js Developer",
-                2000,
-                "Full Stack Developer",
-                2000,
-              ]}
+              sequence={["Fullstack AI Engineer"]}
               wrapper="span"
               speed={50}
-              repeat={Infinity}
+              cursor={true}
               className="text-primary-light"
             />
           </div>
@@ -124,6 +116,7 @@ export default function Hero() {
               href="https://github.com/AruldhineshA"
               target="_blank"
               rel="noreferrer"
+              aria-label="Visit my GitHub profile"
               className={`p-3 rounded-lg transition-all duration-300 hover:-translate-y-1 ${
                 darkMode
                   ? "bg-dark-card text-gray-400 hover:text-primary hover:bg-dark-border"
@@ -136,6 +129,7 @@ export default function Hero() {
               href="https://www.linkedin.com/in/arul-dhinesh-669ab0246/"
               target="_blank"
               rel="noreferrer"
+              aria-label="Visit my LinkedIn profile"
               className={`p-3 rounded-lg transition-all duration-300 hover:-translate-y-1 ${
                 darkMode
                   ? "bg-dark-card text-gray-400 hover:text-primary hover:bg-dark-border"
