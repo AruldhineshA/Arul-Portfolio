@@ -20,6 +20,7 @@ export default function Footer() {
             to="home"
             smooth
             duration={500}
+            href="#home"
             className="cursor-pointer text-xl font-bold"
           >
             <span className="text-primary">&lt;</span>
@@ -73,7 +74,7 @@ export default function Footer() {
           {/* Copyright */}
           <p
             className={`text-sm ${
-              darkMode ? "text-gray-500" : "text-gray-400"
+              darkMode ? "text-gray-400" : "text-gray-600"
             }`}
           >
             &copy; {year} Arul Dhinesh A. All rights reserved.

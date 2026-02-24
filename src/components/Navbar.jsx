@@ -46,6 +46,7 @@ export default function Navbar() {
           to="home"
           smooth
           duration={500}
+          href="#home"
           className="cursor-pointer text-xl sm:text-2xl font-bold"
         >
           <span className="text-primary">&lt;</span>
@@ -65,6 +66,7 @@ export default function Navbar() {
               duration={500}
               offset={-80}
               spy
+              href={`#${link.to}`}
               activeClass="!text-primary"
               className={`cursor-pointer text-sm font-medium transition-colors hover:text-primary ${
                 darkMode ? "text-gray-300" : "text-gray-600"
@@ -131,6 +133,7 @@ export default function Navbar() {
                   smooth
                   duration={500}
                   offset={-80}
+                  href={`#${link.to}`}
                   onClick={() => setMobileOpen(false)}
                   className={`cursor-pointer text-lg font-medium transition-colors hover:text-primary ${
                     darkMode ? "text-gray-300" : "text-gray-600"

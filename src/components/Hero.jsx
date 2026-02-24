@@ -21,13 +21,13 @@ export default function Hero() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
       </div>
 
-      <div className="w-full max-w-6xl mx-auto py-20 grid md:grid-cols-2 gap-8 md:gap-12 items-center relative z-10">
+      <div className="w-full max-w-3xl mx-auto py-20 relative z-10">
         {/* Text Content */}
         <motion.div
-          initial={{ opacity: 0, x: -60 }}
-          animate={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-center md:text-left"
+          className="text-center"
         >
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -60,7 +60,7 @@ export default function Hero() {
           </div>
 
           <p
-            className={`text-sm sm:text-base md:text-lg leading-relaxed mb-8 max-w-lg mx-auto md:mx-0 ${
+            className={`text-sm sm:text-base md:text-lg leading-relaxed mb-8 max-w-lg mx-auto ${
               darkMode ? "text-gray-400" : "text-gray-600"
             }`}
           >
@@ -70,12 +70,13 @@ export default function Hero() {
           </p>
 
           {/* Buttons */}
-          <div className="flex flex-wrap justify-center md:justify-start gap-3 sm:gap-4 mb-8">
+          <div className="flex flex-wrap justify-center gap-3 sm:gap-4 mb-8">
             <Link
               to="projects"
               smooth
               duration={500}
               offset={-80}
+              href="#projects"
               className="group cursor-pointer inline-flex items-center gap-2 bg-gradient-to-r from-primary to-accent text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg text-sm sm:text-base font-medium hover:shadow-lg hover:shadow-primary/25 transition-all duration-300 hover:-translate-y-0.5"
             >
               View Projects
@@ -100,6 +101,7 @@ export default function Hero() {
               smooth
               duration={500}
               offset={-80}
+              href="#contact"
               className={`cursor-pointer inline-flex items-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg text-sm sm:text-base font-medium border transition-all duration-300 hover:-translate-y-0.5 ${
                 darkMode
                   ? "border-dark-border text-gray-300 hover:border-primary hover:text-primary"
@@ -111,7 +113,7 @@ export default function Hero() {
           </div>
 
           {/* Social Links */}
-          <div className="flex justify-center md:justify-start gap-4">
+          <div className="flex justify-center gap-4">
             <a
               href="https://github.com/AruldhineshA"
               target="_blank"
@@ -141,66 +143,6 @@ export default function Hero() {
           </div>
         </motion.div>
 
-        {/* Profile Image / Avatar */}
-        <motion.div
-          initial={{ opacity: 0, x: 60 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="flex justify-center order-first md:order-last"
-        >
-          <div className="relative">
-            {/* Animated ring */}
-            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary to-accent p-1 animate-spin-slow">
-              <div
-                className={`w-full h-full rounded-full ${
-                  darkMode ? "bg-dark-bg" : "bg-light-bg"
-                }`}
-              />
-            </div>
-
-            {/* Avatar placeholder */}
-            <div className="relative w-52 h-52 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center border-2 border-primary/30">
-              <span className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
-                AD
-              </span>
-            </div>
-
-            {/* Floating badges */}
-            <motion.div
-              animate={{ y: [-5, 5, -5] }}
-              transition={{ duration: 3, repeat: Infinity }}
-              className={`absolute -top-2 -right-2 px-3 py-1.5 rounded-lg text-xs font-mono font-bold shadow-lg ${
-                darkMode
-                  ? "bg-dark-card text-primary border border-dark-border"
-                  : "bg-white text-primary border border-gray-200"
-              }`}
-            >
-              React.js
-            </motion.div>
-            <motion.div
-              animate={{ y: [5, -5, 5] }}
-              transition={{ duration: 3, repeat: Infinity, delay: 0.5 }}
-              className={`absolute -bottom-2 -left-2 px-3 py-1.5 rounded-lg text-xs font-mono font-bold shadow-lg ${
-                darkMode
-                  ? "bg-dark-card text-accent border border-dark-border"
-                  : "bg-white text-accent border border-gray-200"
-              }`}
-            >
-              NestJS
-            </motion.div>
-            <motion.div
-              animate={{ y: [-3, 7, -3] }}
-              transition={{ duration: 3, repeat: Infinity, delay: 1 }}
-              className={`absolute top-1/2 -right-6 px-3 py-1.5 rounded-lg text-xs font-mono font-bold shadow-lg ${
-                darkMode
-                  ? "bg-dark-card text-green-400 border border-dark-border"
-                  : "bg-white text-green-600 border border-gray-200"
-              }`}
-            >
-              MongoDB
-            </motion.div>
-          </div>
-        </motion.div>
       </div>
     </section>
   );
