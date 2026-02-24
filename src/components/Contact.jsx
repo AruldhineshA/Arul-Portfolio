@@ -82,7 +82,8 @@ export default function Contact() {
       setSubmitted(true);
       setFormData({ name: "", email: "", message: "" });
       setTimeout(() => setSubmitted(false), 3000);
-    } catch {
+    } catch (err) {
+      console.error("EmailJS Error:", err);
       setError("Failed to send message. Please try again.");
       setTimeout(() => setError(""), 3000);
     } finally {
