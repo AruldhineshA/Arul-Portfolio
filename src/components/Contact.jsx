@@ -10,11 +10,11 @@ import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { useTheme } from "../context/ThemeContext";
 import emailjs from "@emailjs/browser";
 
-// ⚠️ IMPORTANT: Replace these with YOUR actual EmailJS credentials
-// Get them from: https://dashboard.emailjs.com/
 const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
 const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
 const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
 
 const contactInfo = [
   {
@@ -75,8 +75,7 @@ export default function Contact() {
       await emailjs.sendForm(
         EMAILJS_SERVICE_ID,
         EMAILJS_TEMPLATE_ID,
-        formRef.current,
-        EMAILJS_PUBLIC_KEY
+        formRef.current
       );
 
       setSubmitted(true);
