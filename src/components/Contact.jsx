@@ -10,9 +10,9 @@ import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { useTheme } from "../context/ThemeContext";
 import emailjs from "@emailjs/browser";
 
-const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+const EMAILJS_SERVICE_ID = "service_jnaoav7";
+const EMAILJS_TEMPLATE_ID = "template_ickr50o";
+const EMAILJS_PUBLIC_KEY = "BRSOLW2fHORjh4F2O";
 
 emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
 
